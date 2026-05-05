@@ -5,9 +5,10 @@ interface SerchBarProps {
   onSubmit: (value: string) => void;
 }
 
-function SerchBar({ onSubmit }: SerchBarProps) {
+function SearchBar({ onSubmit }: SerchBarProps) {
   const handlerSubmit = (formData: FormData) => {
-    const query = formData.get("query" as string).trim();
+    const value = formData.get("query");
+    const query = typeof value === "string" ? value.trim() : "";
     if (!query) {
       toast.error("Please enter your search query.");
       return;
@@ -43,4 +44,4 @@ function SerchBar({ onSubmit }: SerchBarProps) {
   );
 }
 
-export default SerchBar;
+export default SearchBar;
