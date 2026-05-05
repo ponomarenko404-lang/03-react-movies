@@ -1,5 +1,5 @@
 import toast, { Toaster } from "react-hot-toast";
-import SerchBar from "../SearchBar/SearchBar";
+import SearchBar from "../SearchBar/SearchBar";
 import { useState } from "react";
 import type { Movie } from "../../types/movie";
 import Loader from "../Loader/Loader";
@@ -44,7 +44,7 @@ function App() {
   return (
     <>
       <Toaster />
-      <SerchBar onSubmit={handleSearch} />
+      <SearchBar onSubmit={handleSearch} />
 
       {isLoading && <Loader />}
       {isError && <ErrorMessage />}
