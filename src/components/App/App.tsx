@@ -2,11 +2,11 @@ import toast, { Toaster } from "react-hot-toast";
 import SerchBar from "../SearchBar/SearchBar";
 import { useState } from "react";
 import type { Movie } from "../../types/movie";
-import resMovies from "../../services/movieService";
 import Loader from "../Loader/Loader";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import MovieGrid from "../MovieGrid/MovieGrid";
 import MovieModal from "../MovieModal/MovieModal";
+import fetchMovies from "../../services/movieService";
 
 function App() {
   const [movie, setMovie] = useState<Movie[]>([]);
@@ -24,7 +24,7 @@ function App() {
       setMovie([]);
       setSelectedMovie(null);
 
-      const data = await resMovies(query);
+      const data = await fetchMovies(query);
       if (data.length === 0) {
         toast.error("No movies found for your request.");
       } else {

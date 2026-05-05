@@ -5,7 +5,7 @@ interface MoviesHttpResponse {
   results: Movie[];
 }
 
-async function resMovies(query: string): Promise<Movie[]> {
+async function fetchMovies(query: string): Promise<Movie[]> {
   const key = import.meta.env.VITE_TMDB_TOKEN;
 
   const res = await axios.get<MoviesHttpResponse>(
@@ -22,4 +22,4 @@ async function resMovies(query: string): Promise<Movie[]> {
   return res.data.results;
 }
 
-export default resMovies;
+export default fetchMovies;
